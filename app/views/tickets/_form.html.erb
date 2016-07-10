@@ -1,0 +1,7 @@
+<!-- nested route simple_form_for (polymorphic routing) -->
+<%= simple_form_for([project, ticket]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+
+	<%= f.button :submit, class: "btn-primary" %>
+<% end %>
