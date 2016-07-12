@@ -4,11 +4,16 @@
 	<h1><%= @project.name %></h1>
 
 	<ul class="actions">
-		<li><%= link_to "New Ticket", new_project_ticket_path(@project),
-						class: "new" %></li>
-		<li><%= link_to "Edit Project",
-						edit_project_path(@project),
-						class: "edit" %></li>
+		<!-- Think I saw a better way of doing this in the docs? -->
+		<% if policy(Ticket.new(project: @project)).create? %>
+			<li><%= link_to "New Ticket", new_project_ticket_path(@project),
+							class: "new" %></li>
+		<% end %>
+		<% if policy(@project).update? %>
+			<li><%= link_to "Edit Project",
+							edit_project_path(@project),
+							class: "edit" %></li>
+		<% end %>
 		<% admins_only do %>
 			<li><%= link_to "Delete Project",
 							admin_project_path(@project),

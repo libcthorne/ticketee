@@ -2,16 +2,24 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update]
 
   def index
-    @projects = Project.all
+    #@projects = Project.all
+    # scopes objects based on permissions
+    @projects = policy_scope(Project)
   end
 
   def show
+    # check if the current user can show the project
+    # Pundit::NotAuthorizedError thrown otherwise
+    authorize @project, :show?
   end
 
   def edit
+    authorize @project, :update?
   end
 
   def update
+    authorize @project, :update?
+
     if @project.update(project_params)
       flash[:notice] = "Project has been updated."
       redirect_to @project

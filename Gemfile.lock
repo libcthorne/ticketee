@@ -107,6 +107,8 @@ GEM
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
     pkg-config (1.1.7)
+    pundit (0.3.0)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -211,6 +213,7 @@ DEPENDENCIES
   font-awesome-rails (~> 4.3)
   jbuilder (~> 2.0)
   jquery-rails
+  pundit (~> 0.3.0)
   rails (= 4.2.6)
   rspec-rails (~> 3.2.1)
   sass-rails (~> 5.0)
